@@ -22,7 +22,6 @@ public class RansomNote {
                 return false;
             }
         }
-
         return true;
     }
 }
