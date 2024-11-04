@@ -2,17 +2,17 @@ import java.util.*;
 
 public class ThirdMaximumNumber {
     public int thirdMax(int[] nums) {
-        PriorityQueue<Integer> pq = new PriorityQueue<>((a, b) -> a - b);
-        for (int num : nums) {
-            if (!pq.contains(num)) {
-                pq.offer(num);
+        int n = nums.length - 1;
+        Arrays.sort(nums);
+        int count = 0;
+        for (int i = n; i > 0; i--) {
+            if (nums[i] != nums[i - 1]) {
+                count++;
+            }
+            if (count == 3) {
+                return nums[i - 1];
             }
         }
-        if (pq.size() < 3) {
-            return pq.poll();
-        }
-        pq.poll();
-        pq.poll();
-        return pq.poll();
+        return nums[n];
     }
 }
