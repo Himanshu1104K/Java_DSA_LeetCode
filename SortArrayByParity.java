@@ -1,5 +1,3 @@
-import java.util.*;
-
 public class SortArrayByParity {
     public int[] sortArrayByParityII(int[] nums) {
         int result[] = new int[nums.length];
