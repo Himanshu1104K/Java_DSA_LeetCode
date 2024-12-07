@@ -1,0 +1,28 @@
+import java.util.*;
+
+public class MinLimitOfBallsInBag {
+    public int minimumSize(int[] nums, int maxOperations) {
+        int left = 0;
+        int right = Arrays.stream(nums).max().getAsInt();
+        int ans = right;
+        while (left <= right) {
+            int mid = (left + right) / 2;
+            int ops = 0;
+            for (int num : nums) {
+                ops += (num - 1) / mid;
+                if (ops > maxOperations) {
+                    break;
+                }
+            }
+
+            if (ops <= maxOperations) {
+                ans = mid;
+                right = mid - 1;
+            } else {
+                left = mid + 1;
+            }
+        }
+
+        return ans;
+    }
+}
