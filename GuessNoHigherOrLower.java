@@ -4,7 +4,7 @@ public class GuessNoHigherOrLower {
         int end = n;
         while (start <= end) {
             int mid = start + (end - start) / 2;
-            int num = guess(mid);
+            int num = (mid);
             if (num == 0) {
                 return mid;
             } else if (num == -1) {
