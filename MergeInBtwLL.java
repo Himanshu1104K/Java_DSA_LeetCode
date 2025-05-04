@@ -17,23 +17,25 @@ class ListNode {
 
 public class MergeInBtwLL {
     public ListNode mergeInBetween(ListNode list1, int a, int b, ListNode list2) {
-        ListNode curr = list1;
-        ListNode x = curr;
-        while (curr.val != a) {
-            x = curr;
-            curr = curr.next;
+        ListNode curA = list1;
+
+        for (int i = 0; i < a - 1; i++) {
+            curA = curA.next;
         }
 
-        while (curr.val != b) {
-            curr = curr.next;
+        ListNode curB = curA;
+        for (int i = 0; i < b - a + 2; i++) {
+            curB = curB.next;
         }
 
-        x.next = list2;
-        while (x.next != null) {
-            x = x.next;
+        curA.next = list2;
+
+        ListNode tail = list2;
+        while (tail.next != null) {
+            tail = tail.next;
         }
 
-        x.next = curr;
+        tail.next = curB;
 
         return list1;
     }
